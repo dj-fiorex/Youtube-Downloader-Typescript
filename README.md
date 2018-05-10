@@ -19,13 +19,9 @@ npm install
 npm start
 ```
 
-## Re-compile automatically
+## Pull Request are welcome!
 
-To recompile automatically and to allow using [electron-reload](https://github.com/yan-foto/electron-reload), run this in a separate terminal:
-
-```bash
-npm run watch
-```
+This is my first public repository on GitHub so feel free to open Issues and Pull request! 
 
 ## License
 
