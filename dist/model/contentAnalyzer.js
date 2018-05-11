@@ -1,0 +1,107 @@
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const ytdl = require("ytdl-core");
+class ContentAnalyzer {
+    constructor(containerDomElement, downloadManager) {
+        this._container = $(containerDomElement);
+        this._downloadManager = downloadManager;
+        this._instantiateDomElements();
+        this._bindEvents();
+    }
+    _instantiateDomElements() {
+        this._container.append(`<div class="row">
+        <div class="col-md-8">
+            <p class="lead"><strong>Paste here Youtube Link</strong></p>
+            <input type="url" class="form-control" id="urlInput" aria-describedby="urlHelp" placeholder="Enter link">
+            <small id="urlHelp" class="form-text text-muted">It could be a video, audio or a playlist.</small>
+        </div>
+        <div class="col-md-4 text-center">
+            <p class="lead text-nowrap">Click this button after paste</p>
+            <button class="btn btn-outline-primary disabled" id="analyzeButton" disabled>Analyze</button>
+        </div>
+    </div>
+    <div class="row pt-md-2">
+        <div class="col-12" >
+            <p class="lead"><strong>Check the appropriate type</strong></p>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="videoLink" checked name="contentTypeRadio" value="Video" class="custom-control-input">
+                <label class="custom-control-label" for="videoLink">Video</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="playlistLink" name="contentTypeRadio" value="Playlist" class="custom-control-input">
+                <label class="custom-control-label" for="playlistLink">Playlist</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="audioLink" name="contentTypeRadio" value="Audio" class="custom-control-input">
+                <label class="custom-control-label" for="audioLink">Audio</label>
+            </div>
+        </div>
+    </div>
+    <div class="row pt-md-2">
+        <div class="col-md-8" >
+            <p class="lead"><strong>Check the directory</strong></p>
+            <p class="lead">
+                Current save directory: <span id="saveDirectorySpan"></span>
+            </p>
+        </div>
+        <div class="col-md-4 text-center">
+            <p class="lead text-nowrap">Click this button to change</p>
+            <button class="btn btn-outline-primary" id="changeDirectoryButton">Change</button>
+        </div>
+    </div>`);
+        this._urlInput = $("#urlInput");
+        this._analyzeButton = $("#analyzeButton");
+        this._contentTypeRadio = $("input[type=radio][name=contentTypeRadio]");
+        this._changeDirectoryButton = $("#changeDirectoryButton");
+        this._saveDirectorySpan = $("#saveDirectorySpan");
+        this._saveDirectorySpan.text(this._downloadManager.saveDirectory);
+    }
+    _bindEvents() {
+        ContentAnalyzer.bindEvent(this._urlInput, "keyup", (element) => {
+            console.log(this, $(this), element, element.target.value);
+            ContentAnalyzer.validateYoutubeUrl(element.target.value).then((result) => ContentAnalyzer.switchBtn(this._analyzeButton, result)).catch(e => console.error(e));
+        });
+        ContentAnalyzer.bindEvent(this._contentTypeRadio, "change", ContentAnalyzer.eventLogger);
+        ContentAnalyzer.bindEvent(this._analyzeButton, "click", (element) => {
+            console.log(element, element.target.value, this._contentTypeRadio.filter(":checked").val(), this._contentTypeRadio.filter(":checked").val(), "Video" /* Video */);
+            this._downloadManager.addNewContent(this._urlInput.val(), this._contentTypeRadio.filter(":checked").val());
+        });
+        ContentAnalyzer.bindEvent(this._changeDirectoryButton, "click", ContentAnalyzer.eventLogger);
+    }
+    static validateYoutubeUrl(link) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return ytdl.validateURL(link);
+        });
+    }
+    static bindEvent(element, event, callback) {
+        element.on(event, callback);
+    }
+    static eventLogger(element) {
+        console.log(element);
+    }
+    /**
+     * Function to switch the button enable <-> disable
+     * @param element A JQuery element
+     * @param action What do you want to do?
+     *          True = Button ENABLED  -  False = Button DISABLED
+     */
+    static switchBtn(element, action) {
+        element.prop("disabled", !action);
+        if (action) {
+            element.removeClass("disabled");
+        }
+        else {
+            element.addClass("disabled");
+        }
+    }
+}
+exports.ContentAnalyzer = ContentAnalyzer;
+//# sourceMappingURL=contentAnalyzer.js.map
