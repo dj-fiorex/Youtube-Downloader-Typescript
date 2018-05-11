@@ -2,7 +2,6 @@ import * as ytdl from "ytdl-core";
 import * as sanitize from "sanitize-filename";
 export abstract class DownloadableContent {
     public contentInfo: ytdl.videoInfo;
-
     protected constructor(public url: string) {}
     abstract setup(): Promise<boolean>;
     abstract startDownload(itag: string, path: string, progressCallback: any): void;
