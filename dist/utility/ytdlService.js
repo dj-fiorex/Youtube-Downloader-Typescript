@@ -9,19 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const ytdl = require("ytdl-core");
-const sanitize = require("sanitize-filename");
-class DownloadableContent {
-    constructor(url) {
-        this.url = url;
-    }
-    get title() {
-        return sanitize(this.contentInfo.title);
-    }
-    _getInfo() {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield ytdl.getInfo(this.url).then(info => this.contentInfo = info).catch(e => console.error(e));
-        });
-    }
+function validateYoutubeUrl(link) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return ytdl.validateURL(link);
+    });
 }
-exports.DownloadableContent = DownloadableContent;
-//# sourceMappingURL=downloadableContent.js.map
+exports.validateYoutubeUrl = validateYoutubeUrl;
+//# sourceMappingURL=ytdlService.js.map

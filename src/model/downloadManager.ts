@@ -1,9 +1,10 @@
-import * as fs from "fs-extra";
-import { api } from "electron-util";
-import { DownloadableContent } from "./downloadableContent";
-import { IdGenerator } from "../utility/idGenerator";
-import { Video } from "./video";
-import { ContentType } from "./contentType";
+import {api} from "electron-util";
+import {DownloadableContent} from "./downloadableContent";
+import {IdGenerator} from "../utility/idGenerator";
+import {Video} from "./video";
+import {ContentType} from "./contentType";
+import {checkPath} from "../utility/checkPath";
+import {shell} from "electron";
 
 export class DownloadManager {
     /**
@@ -60,14 +61,11 @@ export class DownloadManager {
     constructor(containerDomElement: string) {
         this._container = $(containerDomElement);
         const documentPath = api.app.getPath("documents");
-        if (fs.existsSync(documentPath + "\\YoutubeDownloader")) {
-            // Do something
-            console.log("esiste");
+        if (checkPath(documentPath + "\\YoutubeDownloader", true)) {
+            this.saveDirectory = documentPath + "\\YoutubeDownloader";
         } else {
-            console.log("non esiste -> la creo");
-            fs.mkdir(`${documentPath}\\YoutubeDownloader`).then(value => console.log(value)).catch(error => console.error(error));
+            this.saveDirectory = "Error with save directory";
         }
-        this.saveDirectory = documentPath + "\\YoutubeDownloader";
         this._idGenerator = new IdGenerator();
         this._downloadIdGenerator = new IdGenerator();
         this._items = [];
@@ -170,7 +168,7 @@ export class DownloadManager {
                 await video.setup();
                 console.log("Video: ", video);
                 this._selectQualityModalTitle.text(video.title);
-                console.log(video, "mbare",  video.getFormats());
+                console.log(video, "mbare", video.getFormats());
                 video.contentInfo.formats.forEach(format => {
                     this._selectQualityModalTable.append(`
                         <tr>
@@ -198,6 +196,7 @@ export class DownloadManager {
             }
         }
     }
+
     private _downloadProgressCB(itag: string, progress: string) {
         console.log(`Video: ${itag} Progress: ${progress}`);
         const progressThis = $(`#progress-${itag}`),
@@ -208,6 +207,15 @@ export class DownloadManager {
             stopThis.removeClass("btn-danger").addClass("btn-primary").html("Retry");
         } else if (progress === "Finish") {
             // Handle finish -> move to other table
+            let htmlElement = $("#row-" + itag).remove();
+            console.log(htmlElement);
+            htmlElement.find("#stop-" + itag).remove();
+            htmlElement.append(`<td><button class="btn btn-outline-primary" id="open-${itag}" value="button-${itag}">Open</button></td>`);
+            $("#open-" + itag).on("click", (element: any) => {
+                console.log(this);
+                // shell.openExternal()
+            });
+            $("#finishedContentTable").append(htmlElement);
         } else {
             progressThis.css("width", parseInt(progress) + "%").html(parseInt(progress) + "%");
         }
@@ -234,5 +242,10 @@ export class DownloadManager {
             stopThis.removeClass("btn-danger").addClass("btn-primary").html("Retry");
         });
     }
+
+    private _addFinishedItemToTable(video: Video) {
+
+    }
 }
+
 // <td><span id="progress-${video.selectedFormat.itag}"></span></td>

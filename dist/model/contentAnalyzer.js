@@ -1,14 +1,8 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const ytdl = require("ytdl-core");
+const electron_util_1 = require("electron-util");
+const toggleBtn_1 = require("../utility/toggleBtn");
+const ytdlService_1 = require("../utility/ytdlService");
 class ContentAnalyzer {
     constructor(containerDomElement, downloadManager) {
         this._container = $(containerDomElement);
@@ -65,42 +59,23 @@ class ContentAnalyzer {
         this._saveDirectorySpan.text(this._downloadManager.saveDirectory);
     }
     _bindEvents() {
-        ContentAnalyzer.bindEvent(this._urlInput, "keyup", (element) => {
+        this._urlInput.on("keyup", (element) => {
             console.log(this, $(this), element, element.target.value);
-            ContentAnalyzer.validateYoutubeUrl(element.target.value).then((result) => ContentAnalyzer.switchBtn(this._analyzeButton, result)).catch(e => console.error(e));
+            ytdlService_1.validateYoutubeUrl(element.target.value).then((result) => toggleBtn_1.toggleBtn(this._analyzeButton, result)).catch(e => console.error(e));
         });
-        ContentAnalyzer.bindEvent(this._contentTypeRadio, "change", ContentAnalyzer.eventLogger);
-        ContentAnalyzer.bindEvent(this._analyzeButton, "click", (element) => {
+        this._analyzeButton.on("click", (element) => {
             console.log(element, element.target.value, this._contentTypeRadio.filter(":checked").val(), this._contentTypeRadio.filter(":checked").val(), "Video" /* Video */);
             this._downloadManager.addNewContent(this._urlInput.val(), this._contentTypeRadio.filter(":checked").val());
         });
-        ContentAnalyzer.bindEvent(this._changeDirectoryButton, "click", ContentAnalyzer.eventLogger);
-    }
-    static validateYoutubeUrl(link) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return ytdl.validateURL(link);
+        this._changeDirectoryButton.on("click", (element) => {
+            const selected = electron_util_1.api.dialog.showOpenDialog({
+                title: "Selecte save directory",
+                defaultPath: this._downloadManager.saveDirectory,
+                properties: ["openDirectory"]
+            });
+            this._downloadManager.saveDirectory = selected[0];
+            this._saveDirectorySpan.text(this._downloadManager.saveDirectory);
         });
-    }
-    static bindEvent(element, event, callback) {
-        element.on(event, callback);
-    }
-    static eventLogger(element) {
-        console.log(element);
-    }
-    /**
-     * Function to switch the button enable <-> disable
-     * @param element A JQuery element
-     * @param action What do you want to do?
-     *          True = Button ENABLED  -  False = Button DISABLED
-     */
-    static switchBtn(element, action) {
-        element.prop("disabled", !action);
-        if (action) {
-            element.removeClass("disabled");
-        }
-        else {
-            element.addClass("disabled");
-        }
     }
 }
 exports.ContentAnalyzer = ContentAnalyzer;

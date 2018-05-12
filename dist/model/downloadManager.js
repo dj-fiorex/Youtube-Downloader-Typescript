@@ -8,23 +8,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs = require("fs-extra");
 const electron_util_1 = require("electron-util");
 const idGenerator_1 = require("../utility/idGenerator");
 const video_1 = require("./video");
+const checkPath_1 = require("../utility/checkPath");
 class DownloadManager {
     constructor(containerDomElement) {
         this._container = $(containerDomElement);
         const documentPath = electron_util_1.api.app.getPath("documents");
-        if (fs.existsSync(documentPath + "\\YoutubeDownloader")) {
-            // Do something
-            console.log("esiste");
+        if (checkPath_1.checkPath(documentPath + "\\YoutubeDownloader", true)) {
+            this.saveDirectory = documentPath + "\\YoutubeDownloader";
         }
         else {
-            console.log("non esiste -> la creo");
-            fs.mkdir(`${documentPath}\\YoutubeDownloader`).then(value => console.log(value)).catch(error => console.error(error));
+            this.saveDirectory = "Error with save directory";
         }
-        this.saveDirectory = documentPath + "\\YoutubeDownloader";
         this._idGenerator = new idGenerator_1.IdGenerator();
         this._downloadIdGenerator = new idGenerator_1.IdGenerator();
         this._items = [];
@@ -166,6 +163,15 @@ class DownloadManager {
         }
         else if (progress === "Finish") {
             // Handle finish -> move to other table
+            let htmlElement = $("#row-" + itag).remove();
+            console.log(htmlElement);
+            htmlElement.find("#stop-" + itag).remove();
+            htmlElement.append(`<td><button class="btn btn-outline-primary" id="open-${itag}" value="button-${itag}">Open</button></td>`);
+            $("#open-" + itag).on("click", (element) => {
+                console.log(this);
+                // shell.openExternal()
+            });
+            $("#finishedContentTable").append(htmlElement);
         }
         else {
             progressThis.css("width", parseInt(progress) + "%").html(parseInt(progress) + "%");
@@ -191,6 +197,8 @@ class DownloadManager {
             $(`#progress-${video.selectedFormat.itag}`).css("width", "0").html("Aborted");
             stopThis.removeClass("btn-danger").addClass("btn-primary").html("Retry");
         });
+    }
+    _addFinishedItemToTable(video) {
     }
 }
 exports.DownloadManager = DownloadManager;

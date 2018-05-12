@@ -1,6 +1,9 @@
 import { DownloadManager } from "./downloadManager";
 import * as ytdl from "ytdl-core";
 import { ContentType } from "./contentType";
+import { api } from "electron-util";
+import { toggleBtn } from "../utility/toggleBtn";
+import {validateYoutubeUrl} from "../utility/ytdlService";
 
 export class ContentAnalyzer {
     /**
@@ -95,38 +98,24 @@ export class ContentAnalyzer {
     }
 
     private _bindEvents() {
-        ContentAnalyzer.bindEvent(this._urlInput, "keyup", (element: any) => {
+        this._urlInput.on("keyup", (element: any) => {
             console.log(this, $(this), element, element.target.value);
-            ContentAnalyzer.validateYoutubeUrl(element.target.value).then((result: boolean) => ContentAnalyzer.switchBtn(this._analyzeButton, result)).catch(e => console.error(e));
+            validateYoutubeUrl(element.target.value).then((result: boolean) => toggleBtn(this._analyzeButton, result)).catch(e => console.error(e));
         });
-        ContentAnalyzer.bindEvent(this._contentTypeRadio, "change", ContentAnalyzer.eventLogger);
-        ContentAnalyzer.bindEvent(this._analyzeButton, "click", (element: any) => {
+        this._analyzeButton.on("click", (element: any) => {
             console.log(element, element.target.value, <ContentType>this._contentTypeRadio.filter(":checked").val(), this._contentTypeRadio.filter(":checked").val(), ContentType.Video);
             this._downloadManager.addNewContent(<string>this._urlInput.val(), <ContentType>this._contentTypeRadio.filter(":checked").val());
         });
-        ContentAnalyzer.bindEvent(this._changeDirectoryButton, "click", ContentAnalyzer.eventLogger);
-    }
-    static async validateYoutubeUrl(link: string) {
-        return ytdl.validateURL(link);
-    }
-    static bindEvent(element: JQuery<HTMLElement>, event: string, callback: JQuery.EventHandler<HTMLElement>) {
-        element.on(event, callback);
-    }
-    static eventLogger(element: JQuery.Event<HTMLElement>) {
-        console.log(element);
-    }
-    /**
-     * Function to switch the button enable <-> disable
-     * @param element A JQuery element
-     * @param action What do you want to do?
-     *          True = Button ENABLED  -  False = Button DISABLED
-     */
-    static switchBtn(element: JQuery<HTMLElement>, action: boolean) {
-        element.prop("disabled", !action);
-        if (action) {
-            element.removeClass("disabled");
-        } else {
-            element.addClass("disabled");
-        }
+        this._changeDirectoryButton.on("click", (element: JQuery.Event<HTMLElement>) => {
+            const selected = api.dialog.showOpenDialog(
+                {
+                    title: "Selecte save directory",
+                    defaultPath: this._downloadManager.saveDirectory,
+                    properties: ["openDirectory"]
+                }
+            );
+            this._downloadManager.saveDirectory = selected[0];
+            this._saveDirectorySpan.text(this._downloadManager.saveDirectory);
+        });
     }
 }
