@@ -4,7 +4,7 @@ export abstract class DownloadableContent {
     public contentInfo: ytdl.videoInfo;
     protected constructor(public url: string) {}
     abstract setup(): Promise<boolean>;
-    abstract startDownload(itag: string, path: string, progressCallback: any): void;
+    abstract startDownload(path: string): void;
     abstract stopDownload(): void;
     get title() {
         return sanitize(this.contentInfo.title);

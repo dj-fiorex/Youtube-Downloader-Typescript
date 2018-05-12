@@ -12,6 +12,7 @@ const electron_util_1 = require("electron-util");
 const idGenerator_1 = require("../utility/idGenerator");
 const video_1 = require("./video");
 const checkPath_1 = require("../utility/checkPath");
+const electron_1 = require("electron");
 class DownloadManager {
     constructor(containerDomElement) {
         this._container = $(containerDomElement);
@@ -142,7 +143,35 @@ class DownloadManager {
                         this._items.push(video);
                         this._addDownloadingItemToTable(video);
                         console.log(element.target.value);
-                        video.startDownload(element.target.value, this.saveDirectory, this._downloadProgressCB);
+                        video.startDownload(this.saveDirectory).then((res) => {
+                            let dataRead = 0;
+                            const totalSize = parseInt(res.headers["content-length"]);
+                            let percent = 0;
+                            res.on("data", data => {
+                                const progressThis = $(`#progress-${element.target.value}`);
+                                dataRead += data.length;
+                                percent = dataRead / totalSize;
+                                // update
+                                progressThis.css("width", parseInt((percent * 100).toFixed(2)) + "%").html(parseInt((percent * 100).toFixed(2)) + "%");
+                            });
+                            res.on("error", (err) => {
+                                const progressThis = $(`#progress-${element.target.value}`), stopThis = $(`#stop-${element.target.value}`);
+                                progressThis.css("width", "0").html("Error");
+                                stopThis.removeClass("btn-danger").addClass("btn-primary").html("Retry");
+                            });
+                            res.on("end", () => {
+                                // Handle finish -> move to other table
+                                const htmlElement = $("#row-" + element.target.value).remove();
+                                console.log(htmlElement);
+                                htmlElement.find("#stop-" + element.target.value).remove();
+                                htmlElement.append(`<td><button class="btn btn-outline-primary" id="open-${element.target.value}" value="button-${element.target.value}">Open</button></td>`);
+                                $("#finishedContentTable").append(htmlElement);
+                                $("#open-" + element.target.value).on("click", (element) => {
+                                    console.log(this);
+                                    electron_1.shell.openExternal(video.savePath);
+                                });
+                            });
+                        });
                     });
                     this._selectQualityModal.modal("show");
                     this._idGenerator.reset();
@@ -152,30 +181,6 @@ class DownloadManager {
                 }
             }
         });
-    }
-    _downloadProgressCB(itag, progress) {
-        console.log(`Video: ${itag} Progress: ${progress}`);
-        const progressThis = $(`#progress-${itag}`), stopThis = $(`#stop-${itag}`);
-        if (progress === "Error") {
-            console.error("Error", progress);
-            progressThis.css("width", "0").html("Error");
-            stopThis.removeClass("btn-danger").addClass("btn-primary").html("Retry");
-        }
-        else if (progress === "Finish") {
-            // Handle finish -> move to other table
-            let htmlElement = $("#row-" + itag).remove();
-            console.log(htmlElement);
-            htmlElement.find("#stop-" + itag).remove();
-            htmlElement.append(`<td><button class="btn btn-outline-primary" id="open-${itag}" value="button-${itag}">Open</button></td>`);
-            $("#open-" + itag).on("click", (element) => {
-                console.log(this);
-                // shell.openExternal()
-            });
-            $("#finishedContentTable").append(htmlElement);
-        }
-        else {
-            progressThis.css("width", parseInt(progress) + "%").html(parseInt(progress) + "%");
-        }
     }
     _addDownloadingItemToTable(video) {
         this._downloadingContentTableRef.append(`<tr id="row-${video.selectedFormat.itag}">

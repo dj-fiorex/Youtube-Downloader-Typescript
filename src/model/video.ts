@@ -3,6 +3,9 @@ import * as ytdl from "ytdl-core";
 import * as fs from "fs";
 import { Readable } from "stream";
 import { IncomingMessage } from "http";
+import { Observable, from } from "rxjs";
+import { fromPromise } from "rxjs/internal-compatibility";
+import { fromObservable } from "rxjs/internal/observable/fromObservable";
 
 
 export class Video extends DownloadableContent {
@@ -10,6 +13,7 @@ export class Video extends DownloadableContent {
     public downloading: boolean;
     public videoProgress: Readable;
     public progress: string;
+    public savePath: string;
     constructor(url: string) {
         if (ytdl.validateURL(url)) {
             super(url);
@@ -38,31 +42,14 @@ export class Video extends DownloadableContent {
             }
         });
     }
-    startDownload(itag: string, path: string, progressCallback: any): void {
+    startDownload(path: string): Promise<IncomingMessage> {
         this.downloading = true;
         this.videoProgress = ytdl(this.url, { format: this.selectedFormat });
-        this.videoProgress.pipe(fs.createWriteStream(path + "/" + this.title + "." + this.selectedFormat.container));
-        this.videoProgress.on("response", (res: IncomingMessage) => {
-            console.log(res);
-            let dataRead = 0;
-            const totalSize: number = parseInt(res.headers["content-length"]);
-            let percent = 0;
-            res.on("data", data => {
-                dataRead += data.length;
-                percent = dataRead / totalSize;
-                // update
-                this.progress = (percent * 100).toFixed(2);
-                progressCallback(itag, (percent * 100).toFixed(2));
-            });
-            res.on("error", (err: Error) => {
-                progressCallback(itag, "Error");
-                this.progress = undefined;
-                this.downloading = undefined;
-            });
-            res.on("end", () => {
-                progressCallback(itag, "Finish");
-                this.progress = "Finish!";
-                this.downloading = undefined;
+        this.savePath = path + "/" + this.title + "." + this.selectedFormat.container;
+        this.videoProgress.pipe(fs.createWriteStream(this.savePath));
+        return new Promise((resolve, reject) => {
+            this.videoProgress.on("response", (res: IncomingMessage) => {
+                resolve(res);
             });
         });
     }

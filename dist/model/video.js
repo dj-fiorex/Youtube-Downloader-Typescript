@@ -33,31 +33,14 @@ class Video extends downloadableContent_1.DownloadableContent {
             }
         });
     }
-    startDownload(itag, path, progressCallback) {
+    startDownload(path) {
         this.downloading = true;
         this.videoProgress = ytdl(this.url, { format: this.selectedFormat });
-        this.videoProgress.pipe(fs.createWriteStream(path + "/" + this.title + "." + this.selectedFormat.container));
-        this.videoProgress.on("response", (res) => {
-            console.log(res);
-            let dataRead = 0;
-            const totalSize = parseInt(res.headers["content-length"]);
-            let percent = 0;
-            res.on("data", data => {
-                dataRead += data.length;
-                percent = dataRead / totalSize;
-                // update
-                this.progress = (percent * 100).toFixed(2);
-                progressCallback(itag, (percent * 100).toFixed(2));
-            });
-            res.on("error", (err) => {
-                progressCallback(itag, "Error");
-                this.progress = undefined;
-                this.downloading = undefined;
-            });
-            res.on("end", () => {
-                progressCallback(itag, "Finish");
-                this.progress = "Finish!";
-                this.downloading = undefined;
+        this.savePath = path + "/" + this.title + "." + this.selectedFormat.container;
+        this.videoProgress.pipe(fs.createWriteStream(this.savePath));
+        return new Promise((resolve, reject) => {
+            this.videoProgress.on("response", (res) => {
+                resolve(res);
             });
         });
     }

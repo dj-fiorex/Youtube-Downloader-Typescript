@@ -1,29 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f4aa4d3-9ef9-4175-8446-e73f68fdbe36" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/utility/checkPath.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/utility/toggleBtn.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/utility/ytdlService.ts" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/electron-quick-start-typescript.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/dist/model/contentAnalyzer.js" afterPath="$PROJECT_DIR$/dist/model/contentAnalyzer.js" />
-      <change beforePath="$PROJECT_DIR$/dist/model/contentAnalyzer.js.map" afterPath="$PROJECT_DIR$/dist/model/contentAnalyzer.js.map" />
-      <change beforePath="$PROJECT_DIR$/dist/model/downloadManager.js" afterPath="$PROJECT_DIR$/dist/model/downloadManager.js" />
-      <change beforePath="$PROJECT_DIR$/dist/model/downloadManager.js.map" afterPath="$PROJECT_DIR$/dist/model/downloadManager.js.map" />
-      <change beforePath="$PROJECT_DIR$/dist/model/downloadableContent.js" afterPath="$PROJECT_DIR$/dist/model/downloadableContent.js" />
-      <change beforePath="$PROJECT_DIR$/dist/model/downloadableContent.js.map" afterPath="$PROJECT_DIR$/dist/model/downloadableContent.js.map" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change beforePath="$PROJECT_DIR$/src/model/contentAnalyzer.ts" afterPath="$PROJECT_DIR$/src/model/contentAnalyzer.ts" />
-      <change beforePath="$PROJECT_DIR$/src/model/downloadManager.ts" afterPath="$PROJECT_DIR$/src/model/downloadManager.ts" />
-      <change beforePath="$PROJECT_DIR$/src/model/downloadableContent.ts" afterPath="$PROJECT_DIR$/src/model/downloadableContent.ts" />
+    <list default="true" id="eae085f5-e6e9-414c-8012-a59bcdf6c280" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/model/downloadManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/downloadManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/model/downloadManager.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/downloadManager.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/model/video.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/video.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/model/video.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/video.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/downloadManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/downloadManager.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/downloadableContent.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/downloadableContent.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/video.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/video.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -40,8 +30,8 @@
       <file leaf-file-name="downloadableContent.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/downloadableContent.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="138">
+              <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
               </folding>
@@ -49,72 +39,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="renderer.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/renderer.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="downloadManager.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="downloadManager.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/downloadManager.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="215" column="19" lean-forward="false" selection-start-line="215" selection-start-column="19" selection-end-line="215" selection-end-column="19" />
+            <state relative-caret-position="672">
+              <caret line="250" column="5" selection-start-line="250" selection-start-column="5" selection-end-line="250" selection-end-column="5" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
-                <element signature="n#!!block;n#instantiateDomElements#0;n#DownloadManager#0" expanded="false" />
-                <element signature="n#!!block;n#addNewContent#0;n#DownloadManager#0" expanded="false" />
-                <marker date="1526120553782" expanded="true" signature="2078:2523" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="2143:2508" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="2577:4373" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="2694:3476" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="2741:3457" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="2795:3434" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="2827:3311" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="2856:3278" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="3372:3405" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="3577:4358" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="3624:4337" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="3678:4314" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="3710:4194" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="3739:4161" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="4252:4285" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="4552:5843" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="4632:5839" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="4668:5826" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="4705:4958" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="4865:4941" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="4906:4913" ph="×" />
-                <marker date="1526120553782" expanded="true" signature="4993:5661" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="5040:5644" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="5094:5621" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="5126:5498" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="5155:5465" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="5559:5592" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="5698:5811" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="6726:7125" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="9223:9991" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="9512:9824" ph="..." />
-                <marker date="1526120553782" expanded="true" signature="9551:9806" ph="..." />
-                <marker date="1526120553782" expanded="false" signature="9767:9776" ph="..." />
+                <element signature="n#!!block;n#instantiateDomElements#0;n#DownloadManager#0" />
+                <element signature="n#!!block;n#addNewContent#0;n#DownloadManager#0" />
+                <element signature="n#!!block;n#_addDownloadingItemToTable#0;n#DownloadManager#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main.ts">
+      <file leaf-file-name="video.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/video.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="46" />
+            <state relative-caret-position="327">
+              <caret line="48" column="66" selection-start-line="48" selection-start-column="66" selection-end-line="48" selection-end-column="66" />
               <folding>
-                <element signature="e#0#46#0" expanded="true" />
+                <element signature="e#0#60#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -123,80 +69,18 @@
       <file leaf-file-name="checkPath.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utility/checkPath.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="45" lean-forward="false" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="contentAnalyzer.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/contentAnalyzer.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="636">
-              <caret line="119" column="5" lean-forward="false" selection-start-line="119" selection-start-column="5" selection-end-line="119" selection-end-column="5" />
-              <folding>
-                <element signature="e#0#52#0" expanded="true" />
-                <marker date="1526118513068" expanded="false" signature="1370:1967" ph="..." />
-                <marker date="1526118513068" expanded="true" signature="1401:1718" ph="..." />
-                <marker date="1526118513068" expanded="true" signature="1761:1956" ph="..." />
-                <marker date="1526118513068" expanded="false" signature="1997:3037" ph="..." />
-                <marker date="1526118513068" expanded="true" signature="2026:3026" ph="..." />
-                <marker date="1526118513068" expanded="true" signature="2179:2407" ph="..." />
-                <marker date="1526118513068" expanded="true" signature="2483:2715" ph="..." />
-                <marker date="1526118513068" expanded="true" signature="2791:3011" ph="..." />
-                <marker date="1526118513068" expanded="false" signature="3067:3542" ph="..." />
-                <marker date="1526118513068" expanded="true" signature="3098:3306" ph="..." />
-                <marker date="1526118513068" expanded="true" signature="3197:3291" ph="..." />
-                <marker date="1526118513068" expanded="true" signature="3349:3531" ph="..." />
-              </folding>
+            <state relative-caret-position="46">
+              <caret line="2" column="23" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="ytdlService.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utility/ytdlService.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="toggleBtn.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utility/toggleBtn.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.d.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/@types/electron-util/index.d.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="TypeScript File" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>switchBtn</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -204,13 +88,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/model/downloadableContent.ts" />
         <option value="$PROJECT_DIR$/node_modules/@types/electron-util/index.d.ts" />
-        <option value="$PROJECT_DIR$/src/utility/checkPath.ts" />
-        <option value="$PROJECT_DIR$/src/utility/tooggleBtn.ts" />
-        <option value="$PROJECT_DIR$/src/utility/toggleBtn.ts" />
-        <option value="$PROJECT_DIR$/src/utility/ytdlService.ts" />
-        <option value="$PROJECT_DIR$/src/model/contentAnalyzer.ts" />
+        <option value="$PROJECT_DIR$/src/model/downloadableContent.ts" />
+        <option value="$PROJECT_DIR$/src/model/video.ts" />
         <option value="$PROJECT_DIR$/src/model/downloadManager.ts" />
       </list>
     </option>
@@ -223,6 +103,14 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-690" />
     <option name="y" value="44" />
@@ -230,42 +118,31 @@
     <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Youtube-Downloader-Typescript" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Youtube-Downloader-Typescript" type="462c0819:PsiDirectoryNode" />
+              <item name="youtube-downloader-typescript" type="b2602c69:ProjectViewProjectNode" />
+              <item name="youtube-downloader-typescript" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Youtube-Downloader-Typescript" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Youtube-Downloader-Typescript" type="462c0819:PsiDirectoryNode" />
+              <item name="youtube-downloader-typescript" type="b2602c69:ProjectViewProjectNode" />
+              <item name="youtube-downloader-typescript" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Youtube-Downloader-Typescript" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Youtube-Downloader-Typescript" type="462c0819:PsiDirectoryNode" />
+              <item name="youtube-downloader-typescript" type="b2602c69:ProjectViewProjectNode" />
+              <item name="youtube-downloader-typescript" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Youtube-Downloader-Typescript" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Youtube-Downloader-Typescript" type="462c0819:PsiDirectoryNode" />
+              <item name="youtube-downloader-typescript" type="b2602c69:ProjectViewProjectNode" />
+              <item name="youtube-downloader-typescript" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="utility" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -277,14 +154,15 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Roaming/npm/node_modules/react-native-cli" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.tslint" value="C:\Users\Carmelo\Documents\Node Projects\Youtube-Downloader-Typescript\node_modules\tslint" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="C:\Users\Carmelo\Documents\NodeProjects\youtube-downloader-typescript\node_modules\tslint" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="typescript-compiler-editor-notification" value="false" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -298,48 +176,45 @@
       </list>
     </option>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9f4aa4d3-9ef9-4175-8446-e73f68fdbe36" name="Default" comment="" />
-      <created>1526116627233</created>
+      <changelist id="eae085f5-e6e9-414c-8012-a59bcdf6c280" name="Default" comment="" />
+      <created>1526127176457</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1526116627233</updated>
-      <workItem from="1526116628423" duration="4537000" />
+      <updated>1526127176457</updated>
+      <workItem from="1526127178282" duration="4985000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4537000" />
+    <option name="totallyTimeSpent" value="4985000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24980299" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32930756" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info id="npm" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" weight="0.32990867" />
+      <window_info anchor="bottom" id="TypeScript" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24986821" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32990867" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,138 +223,56 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="1" />
-    </breakpoint-manager>
-    <watches-manager />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/renderer.ts">
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/electron-util/index.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="414">
+          <caret line="18" column="2" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@types/electron-util/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utility/checkPath.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="45" lean-forward="false" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/downloadableContent.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="138">
+          <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utility/toggleBtn.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utility/ytdlService.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/contentAnalyzer.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="636">
-          <caret line="119" column="5" lean-forward="false" selection-start-line="119" selection-start-column="5" selection-end-line="119" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-            <marker date="1526118513068" expanded="false" signature="1370:1967" ph="..." />
-            <marker date="1526118513068" expanded="true" signature="1401:1718" ph="..." />
-            <marker date="1526118513068" expanded="true" signature="1761:1956" ph="..." />
-            <marker date="1526118513068" expanded="false" signature="1997:3037" ph="..." />
-            <marker date="1526118513068" expanded="true" signature="2026:3026" ph="..." />
-            <marker date="1526118513068" expanded="true" signature="2179:2407" ph="..." />
-            <marker date="1526118513068" expanded="true" signature="2483:2715" ph="..." />
-            <marker date="1526118513068" expanded="true" signature="2791:3011" ph="..." />
-            <marker date="1526118513068" expanded="false" signature="3067:3542" ph="..." />
-            <marker date="1526118513068" expanded="true" signature="3098:3306" ph="..." />
-            <marker date="1526118513068" expanded="true" signature="3197:3291" ph="..." />
-            <marker date="1526118513068" expanded="true" signature="3349:3531" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/downloadManager.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="215" column="19" lean-forward="false" selection-start-line="215" selection-start-column="19" selection-end-line="215" selection-end-column="19" />
+        <state relative-caret-position="672">
+          <caret line="250" column="5" selection-start-line="250" selection-start-column="5" selection-end-line="250" selection-end-column="5" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
-            <element signature="n#!!block;n#instantiateDomElements#0;n#DownloadManager#0" expanded="false" />
-            <element signature="n#!!block;n#addNewContent#0;n#DownloadManager#0" expanded="false" />
-            <marker date="1526120553782" expanded="true" signature="2078:2523" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="2143:2508" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="2577:4373" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="2694:3476" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="2741:3457" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="2795:3434" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="2827:3311" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="2856:3278" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="3372:3405" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="3577:4358" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="3624:4337" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="3678:4314" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="3710:4194" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="3739:4161" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="4252:4285" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="4552:5843" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="4632:5839" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="4668:5826" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="4705:4958" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="4865:4941" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="4906:4913" ph="×" />
-            <marker date="1526120553782" expanded="true" signature="4993:5661" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="5040:5644" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="5094:5621" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="5126:5498" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="5155:5465" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="5559:5592" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="5698:5811" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="6726:7125" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="9223:9991" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="9512:9824" ph="..." />
-            <marker date="1526120553782" expanded="true" signature="9551:9806" ph="..." />
-            <marker date="1526120553782" expanded="false" signature="9767:9776" ph="..." />
+            <element signature="n#!!block;n#instantiateDomElements#0;n#DownloadManager#0" />
+            <element signature="n#!!block;n#addNewContent#0;n#DownloadManager#0" />
+            <element signature="n#!!block;n#_addDownloadingItemToTable#0;n#DownloadManager#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utility/ytdlService.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utility/checkPath.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="23" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/video.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="48" column="66" selection-start-line="48" selection-start-column="66" selection-end-line="48" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#60#0" expanded="true" />
           </folding>
         </state>
       </provider>
