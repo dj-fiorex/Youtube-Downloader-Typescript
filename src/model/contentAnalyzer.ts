@@ -3,7 +3,7 @@ import * as ytdl from "ytdl-core";
 import { ContentType } from "./contentType";
 import { api } from "electron-util";
 import { toggleBtn } from "../utility/toggleBtn";
-import {validateYoutubeUrl} from "../utility/ytdlService";
+import { validateYoutubeUrl } from "../utility/ytdlService";
 
 export class ContentAnalyzer {
     /**
@@ -64,15 +64,15 @@ export class ContentAnalyzer {
         <div class="col-12" >
             <p class="lead"><strong>Check the appropriate type</strong></p>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="videoLink" checked name="contentTypeRadio" value="Video" class="custom-control-input">
+                <input type="radio" id="videoLink" checked name="contentTypeRadio" value="video" class="custom-control-input">
                 <label class="custom-control-label" for="videoLink">Video</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="playlistLink" name="contentTypeRadio" value="Playlist" class="custom-control-input">
+                <input type="radio" id="playlistLink" name="contentTypeRadio" value="playlist" class="custom-control-input">
                 <label class="custom-control-label" for="playlistLink">Playlist</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="audioLink" name="contentTypeRadio" value="Audio" class="custom-control-input">
+                <input type="radio" id="audioLink" name="contentTypeRadio" value="audio" class="custom-control-input">
                 <label class="custom-control-label" for="audioLink">Audio</label>
             </div>
         </div>
@@ -99,17 +99,15 @@ export class ContentAnalyzer {
 
     private _bindEvents() {
         this._urlInput.on("keyup", (element: any) => {
-            console.log(this, $(this), element, element.target.value);
             validateYoutubeUrl(element.target.value).then((result: boolean) => toggleBtn(this._analyzeButton, result)).catch(e => console.error(e));
         });
         this._analyzeButton.on("click", (element: any) => {
-            console.log(element, element.target.value, <ContentType>this._contentTypeRadio.filter(":checked").val(), this._contentTypeRadio.filter(":checked").val(), ContentType.Video);
             this._downloadManager.addNewContent(<string>this._urlInput.val(), <ContentType>this._contentTypeRadio.filter(":checked").val());
         });
         this._changeDirectoryButton.on("click", (element: JQuery.Event<HTMLElement>) => {
             const selected = api.dialog.showOpenDialog(
                 {
-                    title: "Selecte save directory",
+                    title: "Select save directory",
                     defaultPath: this._downloadManager.saveDirectory,
                     properties: ["openDirectory"]
                 }

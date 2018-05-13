@@ -23,9 +23,6 @@ class Video extends downloadableContent_1.DownloadableContent {
             });
         });
     }
-    getFormats() {
-        return this.contentInfo.formats.filter(videoFormat => videoFormat.type.includes("video"));
-    }
     selectFormat(itag) {
         this.contentInfo.formats.forEach(format => {
             if (format.itag === itag) {
@@ -38,7 +35,7 @@ class Video extends downloadableContent_1.DownloadableContent {
         this.videoProgress = ytdl(this.url, { format: this.selectedFormat });
         this.savePath = path + "/" + this.title + "." + this.selectedFormat.container;
         this.videoProgress.pipe(fs.createWriteStream(this.savePath));
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             this.videoProgress.on("response", (res) => {
                 resolve(res);
             });
@@ -48,7 +45,7 @@ class Video extends downloadableContent_1.DownloadableContent {
         console.log("Stop Download");
         this.videoProgress.destroy();
         this.progress = undefined;
-        this.downloading = undefined;
+        this.downloading = false;
     }
 }
 exports.Video = Video;

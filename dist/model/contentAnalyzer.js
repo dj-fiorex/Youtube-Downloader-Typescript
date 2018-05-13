@@ -26,15 +26,15 @@ class ContentAnalyzer {
         <div class="col-12" >
             <p class="lead"><strong>Check the appropriate type</strong></p>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="videoLink" checked name="contentTypeRadio" value="Video" class="custom-control-input">
+                <input type="radio" id="videoLink" checked name="contentTypeRadio" value="video" class="custom-control-input">
                 <label class="custom-control-label" for="videoLink">Video</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="playlistLink" name="contentTypeRadio" value="Playlist" class="custom-control-input">
+                <input type="radio" id="playlistLink" name="contentTypeRadio" value="playlist" class="custom-control-input">
                 <label class="custom-control-label" for="playlistLink">Playlist</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="audioLink" name="contentTypeRadio" value="Audio" class="custom-control-input">
+                <input type="radio" id="audioLink" name="contentTypeRadio" value="audio" class="custom-control-input">
                 <label class="custom-control-label" for="audioLink">Audio</label>
             </div>
         </div>
@@ -60,16 +60,14 @@ class ContentAnalyzer {
     }
     _bindEvents() {
         this._urlInput.on("keyup", (element) => {
-            console.log(this, $(this), element, element.target.value);
             ytdlService_1.validateYoutubeUrl(element.target.value).then((result) => toggleBtn_1.toggleBtn(this._analyzeButton, result)).catch(e => console.error(e));
         });
         this._analyzeButton.on("click", (element) => {
-            console.log(element, element.target.value, this._contentTypeRadio.filter(":checked").val(), this._contentTypeRadio.filter(":checked").val(), "Video" /* Video */);
             this._downloadManager.addNewContent(this._urlInput.val(), this._contentTypeRadio.filter(":checked").val());
         });
         this._changeDirectoryButton.on("click", (element) => {
             const selected = electron_util_1.api.dialog.showOpenDialog({
-                title: "Selecte save directory",
+                title: "Select save directory",
                 defaultPath: this._downloadManager.saveDirectory,
                 properties: ["openDirectory"]
             });

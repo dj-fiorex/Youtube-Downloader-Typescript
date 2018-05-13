@@ -1,31 +1,24 @@
 import { DownloadableContent } from "./downloadableContent";
+import * as ytpl from "ytpl";
 import * as ytdl from "ytdl-core";
 import * as fs from "fs";
 import { Readable } from "stream";
 import { IncomingMessage } from "http";
-import sanitize = require("sanitize-filename");
+import { YoutubePlaylist } from "./youtubePlaylist";
 
 
-export class Video extends DownloadableContent {
-    public contentInfo: ytdl.videoInfo;
-    public selectedFormat: ytdl.videoFormat;
+export class Playlist extends DownloadableContent {
+    public contentInfo: YoutubePlaylist;
     public downloading: boolean;
     public videoProgress: Readable;
     public progress: string;
     public savePath: string;
     constructor(url: string) {
-        if (ytdl.validateURL(url)) {
-            super(url);
-        } else {
-            throw new Error("Not a youtube url!");
-        }
-    }
-    get title() {
-        return sanitize(this.contentInfo.title);
+        super(url);
     }
     setup() {
         return new Promise<boolean>((resolve, reject) => {
-            ytdl.getInfo(this.url).then(info => {
+            ytpl(this.url).then((info: any) => {
                 this.contentInfo = info;
                 resolve(true);
             }).catch(e => {
@@ -34,15 +27,10 @@ export class Video extends DownloadableContent {
             });
         });
     }
-    selectFormat(itag: string) {
-        this.contentInfo.formats.forEach(format => {
-            if (format.itag === itag) {
-                this.selectedFormat = format;
-            }
-        });
-    }
     startDownload(path: string): Promise<IncomingMessage> {
-        this.downloading = true;
+        this.contentInfo.items.forEach(item => {
+
+        })
         this.videoProgress = ytdl(this.url, { format: this.selectedFormat });
         this.savePath = path + "/" + this.title + "." + this.selectedFormat.container;
         this.videoProgress.pipe(fs.createWriteStream(this.savePath));

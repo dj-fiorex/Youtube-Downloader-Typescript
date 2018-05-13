@@ -1,5 +1,5 @@
 export const enum ContentType {
-    Video = "Video",
-    Playlist = "Playlist",
-    Audio = "Audio"
+    Video = "video",
+    Playlist = "playlist",
+    Audio = "audio"
 }

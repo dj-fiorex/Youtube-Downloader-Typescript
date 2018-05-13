@@ -118,14 +118,12 @@ class DownloadManager {
     }
     addNewContent(url, type) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (type === "Video" /* Video */) {
-                try {
-                    const video = new video_1.Video(url);
-                    yield video.setup();
-                    console.log("Video: ", video);
-                    this._selectQualityModalTitle.text(video.title);
-                    console.log(video, "mbare", video.getFormats());
-                    video.contentInfo.formats.forEach(format => {
+            try {
+                const video = new video_1.Video(url);
+                yield video.setup();
+                this._selectQualityModalTitle.text(video.title);
+                video.contentInfo.formats.forEach(format => {
+                    if (format.type.includes(type)) {
                         this._selectQualityModalTable.append(`
                         <tr>
                             <th scope="row">${this._idGenerator.next().value}</th>
@@ -135,50 +133,50 @@ class DownloadManager {
                             <td><button class="btn btn-primary selectable" value="${format.itag}">Select</button></td>
                         </tr>
                     `);
-                    });
-                    $(".selectable").one("click", (element) => {
-                        this._selectQualityModalTable.html("");
-                        video.selectFormat(element.target.value);
-                        this._selectQualityModal.modal("hide");
-                        this._items.push(video);
-                        this._addDownloadingItemToTable(video);
-                        console.log(element.target.value);
-                        video.startDownload(this.saveDirectory).then((res) => {
-                            let dataRead = 0;
-                            const totalSize = parseInt(res.headers["content-length"]);
-                            let percent = 0;
-                            res.on("data", data => {
-                                const progressThis = $(`#progress-${element.target.value}`);
-                                dataRead += data.length;
-                                percent = dataRead / totalSize;
-                                // update
-                                progressThis.css("width", parseInt((percent * 100).toFixed(2)) + "%").html(parseInt((percent * 100).toFixed(2)) + "%");
-                            });
-                            res.on("error", (err) => {
-                                const progressThis = $(`#progress-${element.target.value}`), stopThis = $(`#stop-${element.target.value}`);
-                                progressThis.css("width", "0").html("Error");
-                                stopThis.removeClass("btn-danger").addClass("btn-primary").html("Retry");
-                            });
-                            res.on("end", () => {
-                                // Handle finish -> move to other table
-                                const htmlElement = $("#row-" + element.target.value).remove();
-                                console.log(htmlElement);
-                                htmlElement.find("#stop-" + element.target.value).remove();
-                                htmlElement.append(`<td><button class="btn btn-outline-primary" id="open-${element.target.value}" value="button-${element.target.value}">Open</button></td>`);
-                                $("#finishedContentTable").append(htmlElement);
-                                $("#open-" + element.target.value).on("click", (element) => {
-                                    console.log(this);
-                                    electron_1.shell.openExternal(video.savePath);
-                                });
+                    }
+                });
+                $(".selectable").one("click", (element) => {
+                    this._selectQualityModalTable.empty();
+                    video.selectFormat(element.target.value);
+                    this._selectQualityModal.modal("hide");
+                    this._items.push(video);
+                    this._addDownloadingItemToTable(video);
+                    video.startDownload(this.saveDirectory).then((res) => {
+                        let dataRead = 0;
+                        const totalSize = parseInt(res.headers["content-length"]);
+                        let percent = 0;
+                        res.on("data", data => {
+                            const progressThis = $(`#progress-${element.target.value}`);
+                            dataRead += data.length;
+                            percent = dataRead / totalSize;
+                            // update
+                            progressThis.css("width", parseInt((percent * 100).toFixed(2)) + "%").html(parseInt((percent * 100).toFixed(2)) + "%");
+                        });
+                        res.on("error", (err) => {
+                            const progressThis = $(`#progress-${element.target.value}`), stopThis = $(`#stop-${element.target.value}`);
+                            progressThis.css("width", "0").html("Error");
+                            stopThis.removeClass("btn-danger").addClass("btn-primary").html("Retry");
+                        });
+                        res.on("end", () => {
+                            // Handle finish -> move to other table
+                            const htmlElement = $("#row-" + element.target.value).remove();
+                            htmlElement.find("#stop-" + element.target.value).remove();
+                            htmlElement.append(`<td><button class="btn btn-outline-primary" id="open-${element.target.value}" value="button-${element.target.value}">Open</button></td>`);
+                            $("#finishedContentTable").append(htmlElement);
+                            $("#open-" + element.target.value).on("click", () => {
+                                electron_1.shell.openExternal(video.savePath);
                             });
                         });
                     });
-                    this._selectQualityModal.modal("show");
-                    this._idGenerator.reset();
-                }
-                catch (e) {
-                    console.error(e);
-                }
+                });
+                this._selectQualityModal.on("hidden.bs.modal", () => {
+                    this._selectQualityModalTable.empty();
+                });
+                this._selectQualityModal.modal("show");
+                this._idGenerator.reset();
+            }
+            catch (e) {
+                console.error(e);
             }
         });
     }
@@ -197,15 +195,12 @@ class DownloadManager {
             <td><button class="btn btn-danger" id="stop-${video.selectedFormat.itag}" value="button-${video.selectedFormat.itag}">Stop</button></td>
             </tr>`);
         const stopThis = $(`#stop-${video.selectedFormat.itag}`);
-        stopThis.on("click", (element) => {
+        stopThis.on("click", () => {
             video.stopDownload();
             $(`#progress-${video.selectedFormat.itag}`).css("width", "0").html("Aborted");
             stopThis.removeClass("btn-danger").addClass("btn-primary").html("Retry");
         });
     }
-    _addFinishedItemToTable(video) {
-    }
 }
 exports.DownloadManager = DownloadManager;
-// <td><span id="progress-${video.selectedFormat.itag}"></span></td>
 //# sourceMappingURL=downloadManager.js.map
