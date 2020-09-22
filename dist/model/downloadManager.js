@@ -1,14 +1,16 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const electron_util_1 = require("electron-util");
+exports.DownloadManager = void 0;
+const { api } = require('electron-util');
 const idGenerator_1 = require("../utility/idGenerator");
 const video_1 = require("./video");
 const checkPath_1 = require("../utility/checkPath");
@@ -16,7 +18,7 @@ const electron_1 = require("electron");
 class DownloadManager {
     constructor(containerDomElement) {
         this._container = $(containerDomElement);
-        const documentPath = electron_util_1.api.app.getPath("documents");
+        const documentPath = api.app.getPath("documents");
         if (checkPath_1.checkPath(documentPath + "\\YoutubeDownloader", true)) {
             this.saveDirectory = documentPath + "\\YoutubeDownloader";
         }
@@ -66,7 +68,6 @@ class DownloadManager {
                             <th scope="col">Type</th>
                             <th scope="col">Resolution</th>
                             <th scope="col">Container</th>
-                            <th scope="col">Progress</th>
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
@@ -123,21 +124,22 @@ class DownloadManager {
                 yield video.setup();
                 this._selectQualityModalTitle.text(video.title);
                 video.contentInfo.formats.forEach(format => {
-                    if (format.type.includes(type)) {
-                        this._selectQualityModalTable.append(`
+                    //if (format.type.includes(type)) {
+                    this._selectQualityModalTable.append(`
                         <tr>
                             <th scope="row">${this._idGenerator.next().value}</th>
-                            <td>${format.type}</td>
-                            <td>${format.resolution}</td>
+                            <td>${format.codecs}</td>
+                            <td>${format.width}</td>
                             <td>${format.container}</td>
                             <td><button class="btn btn-primary selectable" value="${format.itag}">Select</button></td>
                         </tr>
                     `);
-                    }
+                    // }
                 });
                 $(".selectable").one("click", (element) => {
                     this._selectQualityModalTable.empty();
-                    video.selectFormat(element.target.value);
+                    console.log(element);
+                    video.selectFormat(parseInt(element.target.value));
                     this._selectQualityModal.modal("hide");
                     this._items.push(video);
                     this._addDownloadingItemToTable(video);
@@ -162,6 +164,7 @@ class DownloadManager {
                             const htmlElement = $("#row-" + element.target.value).remove();
                             htmlElement.find("#stop-" + element.target.value).remove();
                             htmlElement.append(`<td><button class="btn btn-outline-primary" id="open-${element.target.value}" value="button-${element.target.value}">Open</button></td>`);
+                            console.log(htmlElement);
                             $("#finishedContentTable").append(htmlElement);
                             $("#open-" + element.target.value).on("click", () => {
                                 electron_1.shell.openExternal(video.savePath);
@@ -181,11 +184,12 @@ class DownloadManager {
         });
     }
     _addDownloadingItemToTable(video) {
+        console.log(video);
         this._downloadingContentTableRef.append(`<tr id="row-${video.selectedFormat.itag}">
             <th scope="row">${this._downloadIdGenerator.next().value}</th>
             <td>${video.title}</td>
-            <td>${video.selectedFormat.type}</td>
-            <td>${video.selectedFormat.resolution}</td>
+            <td>${video.selectedFormat.codecs}</td>
+            <td>${video.selectedFormat.width}</td>
             <td>${video.selectedFormat.container}</td>
             <td>
                 <div class="progress">

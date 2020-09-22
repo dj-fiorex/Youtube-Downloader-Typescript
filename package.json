@@ -1,40 +1,40 @@
 {
-  "name": "youtube-downloader",
-  "version": "1.0.0",
-  "description": "A minimal Electron application written with Typescript to download Youtube videos, audio and playlist with ytdl-core under the hood!",
-  "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w",
-    "lint": "tslint -c tslint.json -p tsconfig.json",
-    "start": "npm run build && electron ./dist/main.js"
-  },
-  "repository": "",
-  "keywords": [
-    "Electron",
-    "youtube",
-    "video",
-    "downloader",
-    "typescript"
-  ],
-  "author": "Carmelo Fiorello",
-  "license": "CC0-1.0",
-  "devDependencies": {
-    "@types/fs-extra": "^5.0.2",
-    "electron": "^2.0.0",
-    "tslint": "^5.10.0",
-    "typescript": "^2.8.3"
-  },
-  "dependencies": {
-    "@types/electron-util": "^0.2.0",
-    "@types/jquery": "^3.3.1",
-    "@types/sanitize-filename": "^1.1.28",
-    "electron-reload": "^1.2.2",
-    "electron-util": "^0.8.2",
-    "fs-extra": "^6.0.0",
-    "jquery": "^3.3.1",
-    "rxjs": "^6.1.0",
-    "sanitize-filename": "^1.6.1",
-    "ytdl-core": "^0.20.3",
-    "ytpl": "^0.1.11"
-  }
+	"name": "youtube-downloader",
+	"version": "1.0.0",
+	"description": "A minimal Electron application written with Typescript to download Youtube videos, audio and playlist with ytdl-core under the hood!",
+	"scripts": {
+		"build": "tsc",
+		"watch": "tsc -w",
+		"lint": "tslint -c tslint.json -p tsconfig.json",
+		"start": "npm run build && electron ./dist/main.js"
+	},
+	"repository": "",
+	"keywords": [
+		"Electron",
+		"youtube",
+		"video",
+		"downloader",
+		"typescript"
+	],
+	"author": "Carmelo Fiorello",
+	"license": "CC0-1.0",
+	"devDependencies": {
+		"@types/electron-util": "^0.2.0",
+		"@types/fs-extra": "^9.0.1",
+		"@types/jquery": "^3.5.1",
+		"@types/sanitize-filename": "^1.1.28",
+		"electron": "^2.0.0",
+		"tslint": "^5.10.0",
+		"typescript": "^4.0.3"
+	},
+	"dependencies": {
+		"electron-reload": "^1.2.2",
+		"electron-util": "^0.8.2",
+		"fs-extra": "^6.0.0",
+		"jquery": "^3.3.1",
+		"rxjs": "^6.1.0",
+		"sanitize-filename": "^1.6.1",
+		"ytdl-core": "^3.2.2",
+		"ytpl": "^0.1.11"
+	}
 }

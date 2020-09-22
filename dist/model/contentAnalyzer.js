@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const electron_util_1 = require("electron-util");
+exports.ContentAnalyzer = void 0;
+//import { api } from "electron-util";
+const { api } = require('electron-util');
 const toggleBtn_1 = require("../utility/toggleBtn");
 const ytdlService_1 = require("../utility/ytdlService");
 class ContentAnalyzer {
@@ -66,7 +68,7 @@ class ContentAnalyzer {
             this._downloadManager.addNewContent(this._urlInput.val(), this._contentTypeRadio.filter(":checked").val());
         });
         this._changeDirectoryButton.on("click", (element) => {
-            const selected = electron_util_1.api.dialog.showOpenDialog({
+            const selected = api.dialog.showOpenDialog({
                 title: "Select save directory",
                 defaultPath: this._downloadManager.saveDirectory,
                 properties: ["openDirectory"]

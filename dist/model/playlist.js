@@ -1,25 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Video = void 0;
+exports.Playlist = void 0;
 const downloadableContent_1 = require("./downloadableContent");
+const ytpl = require("ytpl");
 const ytdl = require("ytdl-core");
 const fs = require("fs");
-const sanitize = require("sanitize-filename");
-class Video extends downloadableContent_1.DownloadableContent {
+class Playlist extends downloadableContent_1.DownloadableContent {
     constructor(url) {
-        if (ytdl.validateURL(url)) {
-            super(url);
-        }
-        else {
-            throw new Error("Not a youtube url!");
-        }
-    }
-    get title() {
-        return sanitize(this.contentInfo.title);
+        super(url);
     }
     setup() {
         return new Promise((resolve, reject) => {
-            ytdl.getInfo(this.url).then(info => {
+            ytpl(this.url).then((info) => {
                 this.contentInfo = info;
                 resolve(true);
             }).catch(e => {
@@ -28,16 +20,9 @@ class Video extends downloadableContent_1.DownloadableContent {
             });
         });
     }
-    selectFormat(itag) {
-        console.log(this.contentInfo);
-        this.contentInfo.formats.forEach(format => {
-            if (format.itag === itag) {
-                this.selectedFormat = format;
-            }
-        });
-    }
     startDownload(path) {
-        this.downloading = true;
+        this.contentInfo.items.forEach(item => {
+        });
         this.videoProgress = ytdl(this.url, { format: this.selectedFormat });
         this.savePath = path + "/" + this.title + "." + this.selectedFormat.container;
         this.videoProgress.pipe(fs.createWriteStream(this.savePath));
@@ -54,5 +39,5 @@ class Video extends downloadableContent_1.DownloadableContent {
         this.downloading = false;
     }
 }
-exports.Video = Video;
-//# sourceMappingURL=video.js.map
+exports.Playlist = Playlist;
+//# sourceMappingURL=playlist.js.map

@@ -6,6 +6,7 @@
  *          True = Button ENABLED  -  False = Button DISABLED
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.toggleBtn = void 0;
 function toggleBtn(element, action) {
     element.prop("disabled", !action);
     if (action) {

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.checkPath = void 0;
 const fs = require("fs-extra");
 function checkPath(path, createIfNotExist = false) {
     if (fs.existsSync(path)) {

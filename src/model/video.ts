@@ -34,7 +34,8 @@ export class Video extends DownloadableContent {
             });
         });
     }
-    selectFormat(itag: string) {
+    selectFormat(itag: number) {
+        console.log(this.contentInfo);
         this.contentInfo.formats.forEach(format => {
             if (format.itag === itag) {
                 this.selectedFormat = format;

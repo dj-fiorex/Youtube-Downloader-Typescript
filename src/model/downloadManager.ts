@@ -1,4 +1,4 @@
-import { api } from "electron-util";
+const { api } = require('electron-util');
 import { DownloadableContent } from "./downloadableContent";
 import { IdGenerator } from "../utility/idGenerator";
 import { Video } from "./video";
@@ -169,21 +169,22 @@ export class DownloadManager {
             await video.setup();
             this._selectQualityModalTitle.text(video.title);
             video.contentInfo.formats.forEach(format => {
-                if (format.type.includes(type)) {
+                //if (format.type.includes(type)) {
                     this._selectQualityModalTable.append(`
                         <tr>
                             <th scope="row">${this._idGenerator.next().value}</th>
-                            <td>${format.type}</td>
-                            <td>${format.resolution}</td>
+                            <td>${format.codecs}</td>
+                            <td>${format.width}</td>
                             <td>${format.container}</td>
                             <td><button class="btn btn-primary selectable" value="${format.itag}">Select</button></td>
                         </tr>
                     `);
-                }
+              // }
             });
             $(".selectable").one("click", (element: any) => {
                 this._selectQualityModalTable.empty();
-                video.selectFormat(element.target.value);
+                console.log(element);
+                video.selectFormat(parseInt(element.target.value));
                 this._selectQualityModal.modal("hide");
                 this._items.push(video);
                 this._addDownloadingItemToTable(video);
@@ -227,11 +228,12 @@ export class DownloadManager {
     }
 
     private _addDownloadingItemToTable(video: Video) {
+        console.log(video);
         this._downloadingContentTableRef.append(`<tr id="row-${video.selectedFormat.itag}">
             <th scope="row">${this._downloadIdGenerator.next().value}</th>
             <td>${video.title}</td>
-            <td>${video.selectedFormat.type}</td>
-            <td>${video.selectedFormat.resolution}</td>
+            <td>${video.selectedFormat.codecs}</td>
+            <td>${video.selectedFormat.width}</td>
             <td>${video.selectedFormat.container}</td>
             <td>
                 <div class="progress">

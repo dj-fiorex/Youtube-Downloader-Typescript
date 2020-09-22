@@ -1,7 +1,8 @@
 import { DownloadManager } from "./downloadManager";
 import * as ytdl from "ytdl-core";
 import { ContentType } from "./contentType";
-import { api } from "electron-util";
+//import { api } from "electron-util";
+const { api } = require('electron-util');
 import { toggleBtn } from "../utility/toggleBtn";
 import { validateYoutubeUrl } from "../utility/ytdlService";
 
@@ -104,7 +105,7 @@ export class ContentAnalyzer {
         this._analyzeButton.on("click", (element: any) => {
             this._downloadManager.addNewContent(<string>this._urlInput.val(), <ContentType>this._contentTypeRadio.filter(":checked").val());
         });
-        this._changeDirectoryButton.on("click", (element: JQuery.Event<HTMLElement>) => {
+        this._changeDirectoryButton.on("click", (element: any) => {
             const selected = api.dialog.showOpenDialog(
                 {
                     title: "Select save directory",

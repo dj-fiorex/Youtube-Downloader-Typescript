@@ -13,6 +13,8 @@ export class Playlist extends DownloadableContent {
     public videoProgress: Readable;
     public progress: string;
     public savePath: string;
+    public title: string;
+    public selectedFormat: ytdl.videoFormat;
     constructor(url: string) {
         super(url);
     }
